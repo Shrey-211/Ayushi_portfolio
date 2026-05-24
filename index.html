@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayushi Mishra — Strategic Marketing Leader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@100;200;300;400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Jost',sans-serif;font-weight:300;cursor:none;overflow-x:hidden;
+  background:
+    linear-gradient(180deg,
+      #06122A 0%,
+      #0A1A38 12%,
+      #1A1E44 26%,
+      #2E1F45 40%,
+      #4A2240 52%,
+      #5C2A3E 62%,
+      #5E2E3A 70%,
+      #3D2640 80%,
+      #1A1E3E 90%,
+      #08152C 100%
+    );
+  background-attachment:fixed;
+  color:#F2E8E6;
+  min-height:100vh;
+}
+
+/* GLOBAL PAINTERLY OVERLAYS */
+body::before{
+  content:'';position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(ellipse 70% 50% at 18% 22%,rgba(245,200,214,.10),transparent 60%),
+    radial-gradient(ellipse 60% 50% at 82% 35%,rgba(170,180,235,.12),transparent 65%),
+    radial-gradient(ellipse 80% 60% at 50% 65%,rgba(220,160,180,.08),transparent 70%),
+    radial-gradient(ellipse 50% 40% at 25% 88%,rgba(232,200,150,.07),transparent 65%);
+  mix-blend-mode:screen;
+}
+
+/* GRAIN */
+.grain{position:fixed;inset:0;z-index:300;pointer-events:none;opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:180px;mix-blend-mode:overlay;animation:gr .4s steps(1) infinite;}
+@keyframes gr{0%,100%{background-position:0 0}25%{background-position:-18px 9px}50%{background-position:9px -14px}75%{background-position:-4px 18px}}
+
+/* CURSOR */
+.cur{width:6px;height:6px;background:#F5C8D6;border-radius:50%;position:fixed;pointer-events:none;z-index:999;transform:translate(-50%,-50%);mix-blend-mode:screen;transition:width .35s,height .35s;box-shadow:0 0 14px rgba(245,200,214,.6);}
+.cur.big{width:30px;height:30px;background:transparent;border:1px solid rgba(245,200,214,.55);box-shadow:0 0 22px rgba(170,190,240,.4);}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 52px;height:68px;display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(to bottom,rgba(6,14,26,.7),transparent);
+  opacity:0;transition:opacity 2s ease 5.5s;}
+.nav.show{opacity:1;}
+.nav-mono{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:14px;letter-spacing:4px;color:rgba(234,241,250,.7);text-transform:uppercase;transition:opacity .8s;}
+.nav-links{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:38px;opacity:0;transition:opacity .8s;pointer-events:none;}
+.nav:hover .nav-links{opacity:1;pointer-events:all;}
+.nav:hover .nav-mono{opacity:0;}
+.nav-links a{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:rgba(234,241,250,.8);text-decoration:none;transition:color .5s;font-weight:400;}
+.nav-links a:hover{color:#8CC3F8;}
+.nav-dl{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(234,241,250,.7);text-decoration:none;border-bottom:1px solid rgba(150,195,242,.5);padding-bottom:2px;transition:all .5s;font-weight:400;}
+.nav-dl:hover{color:#8CC3F8;border-color:#8CC3F8;}
+
+section{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+
+/* SCROLL REVEAL */
+.fr{opacity:0;transform:translateY(26px);transition:opacity 1.6s cubic-bezier(.16,1,.3,1),transform 1.6s cubic-bezier(.16,1,.3,1);}
+.fr.d1{transition-delay:.2s}.fr.d2{transition-delay:.36s}.fr.d3{transition-delay:.52s}
+.fr.d4{transition-delay:.68s}.fr.d5{transition-delay:.84s}.fr.d6{transition-delay:1s}
+.fr.visible{opacity:1;transform:translateY(0);}
+.fi{opacity:0;transition:opacity 2s ease;}.fi.d1{transition-delay:.3s}.fi.visible{opacity:1;}
+
+/* IRIS / PORTAL REVEAL — entering through a circular doorway */
+.curtain{position:absolute;inset:0;z-index:40;pointer-events:none;background:#06101f;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:transform .5s cubic-bezier(.16,1,.3,1),opacity .5s ease,visibility 0s linear .5s;transform-origin:center center;}
+.curtain.open{opacity:0;transform:scale(1.15);visibility:hidden;}
+.curtain .cstage{position:absolute;display:flex;flex-direction:column;align-items:center;gap:14px;opacity:0;transform:scale(.85);transition:opacity .4s ease,transform .6s cubic-bezier(.22,.61,.36,1);will-change:transform,opacity;}
+.curtain .cstage .ctag{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:6px;color:rgba(245,200,214,.85);text-transform:uppercase;font-weight:400;}
+.curtain .cstage .ctitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:clamp(28px,4.4vw,56px);letter-spacing:.02em;color:#f5ecea;text-align:center;line-height:1.1;max-width:18ch;}
+.curtain.s1 .cstage1{opacity:1;transform:scale(1.2);}
+.curtain.s1 .cstage1 .ctitle{font-size:clamp(36px,6vw,80px);letter-spacing:.18em;font-style:normal;font-family:'Inter',sans-serif;font-weight:200;}
+.curtain.s2 .cstage1{opacity:0;transform:scale(1.8);}
+.curtain.s2 .cstage2{opacity:1;transform:scale(1);}
+
+
+/* BG LAYERS */
+.bg-layer{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;}
+.bg-dim{position:absolute;inset:0;z-index:1;pointer-events:none;}
+.cz{position:relative;z-index:2;}
+
+/* ═══ SHARED ═══ */
+.wrap{max-width:1180px;width:100%;padding:0 64px;}
+.s-tag{font-size:13px;letter-spacing:5px;text-transform:uppercase;margin-bottom:16px;display:block;font-weight:500;color:#F5C8D6;}
+.hl{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(48px,7.5vw,90px);line-height:.95;text-transform:uppercase;letter-spacing:-1.5px;color:#F4ECEA;text-shadow:0 2px 30px rgba(0,0,0,.35);}
+.hl em{font-style:italic;text-transform:none;letter-spacing:0;}
+#stages .hl em{font-size:.55em;font-weight:300;vertical-align:baseline;letter-spacing:.5px;}
+.hl .a{font-size:.6em;font-style:normal;}
+.gl{width:52px;height:1px;margin:14px 0 24px;}
+.prose{font-size:18px;line-height:1.8;font-weight:400;color:rgba(244,236,234,.82);text-shadow:0 1px 16px rgba(0,0,0,.4);}
+.elink{font-size:13px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-bottom:1px solid;padding-bottom:3px;transition:all .5s;display:inline-block;font-weight:500;color:#8CC3F8;}
+
+/* ═══════════════════════════════
+   1. HERO
+═══════════════════════════════ */
+#hero{background:transparent;min-height:100vh;align-items:flex-start;position:relative;overflow:hidden;z-index:1;}
+.hero-bg-landscape{position:fixed;inset:0;width:100%;height:100vh;z-index:-1;background-size:cover;background-position:center center;
+  filter:brightness(.32) saturate(.8);opacity:0;transition:opacity 3s ease 2.5s;transform-origin:center center;pointer-events:none;}
+.open .hero-bg-landscape{opacity:.18;}
+.hero-bg{position:absolute;inset:0;z-index:1;background-size:cover;background-position:center center;
+  filter:brightness(.65) saturate(.95);opacity:0;transition:opacity 3s ease 2.5s;transform-origin:center center;
+  -webkit-mask-image:linear-gradient(to bottom,black 75%,transparent 100%);
+  mask-image:linear-gradient(to bottom,black 75%,transparent 100%);}
+.hero-bg::after{content:'';position:absolute;inset:0;background:url('/hero-portal.jpg') center/cover no-repeat;opacity:.55;mix-blend-mode:screen;}
+.open .hero-bg{opacity:.75;}
+.scrolled .hero-bg, .scrolled .hero-bg-landscape{transition:none!important;}
+.hero-dim-l{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(105deg,rgba(5,12,24,.82) 0%,rgba(6,14,26,.58) 40%,rgba(6,14,26,.18) 66%,transparent 85%);}
+.hero-dim-b{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(to top,rgba(10,16,38,.82) 0%,rgba(6,14,26,.45) 16%,transparent 38%);}
+
+/* DOORS */
+.dw{position:absolute;inset:0;display:flex;z-index:5;}
+.pan{width:50%;height:100%;position:relative;transition:transform 2.8s cubic-bezier(.77,0,.175,1);}
+.pan-l{transform-origin:left center;}
+.pan-r{transform-origin:right center;}
+.pan svg{position:absolute;inset:0;width:100%;height:100%;}
+.open .pan-l{transform:perspective(1600px) rotateY(-90deg);}
+.open .pan-r{transform:perspective(1600px) rotateY(90deg);}
+
+.hero-c{position:absolute;left:64px;top:50%;z-index:15;max-width:540px;
+  opacity:0;transform:translateY(calc(-50% + 30px));
+  transition:opacity 2s ease 3s,transform 2s cubic-bezier(.16,1,.3,1) 3s;}
+.open .hero-c{opacity:1;transform:translateY(-50%);}
+
+.hero-hl{font-family:'Cormorant Garamond',serif;font-weight:300;text-transform:uppercase;line-height:1;letter-spacing:-1px;}
+.hero-hl .l1{font-size:clamp(38px,5.6vw,72px);display:block;color:#F2F6FC;white-space:nowrap;}
+.hero-hl .l2{font-size:clamp(38px,5.6vw,72px);display:block;margin-top:8px;color:rgba(242,246,252,.92);}
+.hero-hl .l2 em{font-style:italic;color:rgba(245,200,214,.85);text-transform:none;}
+.hero-sub{font-size:18px;line-height:1.8;color:rgba(244,236,234,.82);margin-top:32px;max-width:440px;font-weight:400;text-shadow:0 1px 12px rgba(0,0,0,.5);}
+
+/* Glass stat cards */
+.hero-gcards{position:absolute;right:52px;bottom:90px;z-index:15;display:flex;gap:12px;align-items:flex-end;opacity:0;transition:opacity 2s ease 4.2s;}
+.open .hero-gcards{opacity:1;}
+.gc{border-radius:20px;background:rgba(234,241,250,.15);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(234,241,250,.24);overflow:hidden;transition:all .4s;}
+.gc:hover{background:rgba(234,241,250,.22);transform:translateY(-3px);}
+.gc-img{width:168px;height:126px;background:rgba(5,12,24,.85);display:flex;align-items:center;justify-content:center;position:relative;}
+.gc-play{width:42px;height:42px;background:rgba(234,241,250,.92);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.gc-link{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-decoration:none;}
+.gc-body{padding:12px 16px;}
+.gc-title{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:16px;color:#fff;line-height:1.2;}
+.gc-sub{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(234,241,250,.8);margin-top:3px;font-weight:400;}
+.gc-s{width:148px;}
+.gc-row{padding:13px 16px;display:flex;gap:10px;align-items:center;}
+.gc-row+.gc-row{border-top:1px solid rgba(234,241,250,.12);}
+.gc-n{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:34px;color:rgba(150,195,242,.95);line-height:1;}
+.gc-t{font-size:13px;color:rgba(234,241,250,.9);line-height:1.4;font-weight:400;}
+
+/* Spin badge */
+.spin-b{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:15;width:84px;height:84px;opacity:0;transition:opacity 2s ease 5s;}
+.open .spin-b{opacity:.45;}
+.spin-r{animation:sR 14s linear infinite;}
+@keyframes sR{to{transform:rotate(360deg);}}
+.spin-cc{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;}
+.spin-ic{font-size:13px;color:rgba(234,241,250,.85);font-weight:400;}
+.hero-dots{position:absolute;bottom:46px;right:52px;z-index:15;display:flex;gap:7px;opacity:0;transition:opacity 2s ease 4.8s;}
+.open .hero-dots{opacity:.45;}
+.dot{width:20px;height:3px;border-radius:2px;background:rgba(234,241,250,.25);}
+.dot.on{background:rgba(234,241,250,.82);width:28px;}
+.hero-img-r{position:absolute;right:52px;top:50%;transform:translateY(-50%);z-index:14;width:min(46vw,640px);aspect-ratio:16/9;border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(245,225,230,.08);opacity:0;transition:opacity 1.8s ease 1.6s,transform 1.8s ease 1.6s;}
+.open .hero-img-r{opacity:1;}
+.hero-img-r img{width:100%;height:100%;object-fit:cover;display:block;}
+@media (max-width:900px){.hero-img-r{display:none;}}
+.yr{position:absolute;left:64px;bottom:32px;z-index:15;font-size:11px;letter-spacing:3px;color:rgba(234,241,250,.6);opacity:0;transition:opacity 1.5s ease 5.5s;}
+.open .yr{opacity:1;}
+.amb{position:absolute;width:580px;height:580px;border-radius:50%;background:radial-gradient(circle,rgba(150,195,242,.05) 0%,transparent 68%);pointer-events:none;z-index:1;animation:bth 7s ease-in-out infinite;}
+@keyframes bth{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
+
+/* ═══════════════════════════════
+   2. THE STORY (ABOUT)
+═══════════════════════════════ */
+#about{background:transparent;padding-top:140px;padding-bottom:120px;position:relative;z-index:1;}
+#about .bg-dim{background:linear-gradient(to bottom,rgba(10,16,38,.82) 0%,rgba(40,22,52,.58) 40%,rgba(70,32,58,.52) 100%);}
+
+.aw{max-width:1180px;width:100%;padding:0 64px;position:relative;}
+/* STORY CARDS */
+.acards{position:relative;display:flex;gap:18px;margin:56px 0 0;justify-content:center;flex-wrap:nowrap;perspective:1200px;padding:30px 0;}
+.acard{
+  position:relative;border-radius:28px;padding:26px 22px 24px;
+  border:1px solid rgba(255,255,255,.5);
+  transition:transform .55s cubic-bezier(.16,1,.3,1),box-shadow .55s,border-color .55s;
+  cursor:default;
+  box-shadow:0 22px 50px rgba(15,8,28,.45), inset 0 1px 0 rgba(255,255,255,.4);
+  min-height:230px;display:flex;flex-direction:column;width:190px;flex:0 0 190px;
+}
+.acard:hover{z-index:10;transform:rotate(0deg) translateY(-10px) scale(1.05)!important;
+  box-shadow:0 32px 70px rgba(15,8,28,.6), inset 0 1px 0 rgba(255,255,255,.5);}
+.acard-arr{
+  position:absolute;top:14px;right:14px;
+  width:32px;height:32px;background:rgba(255,255,255,.5);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:13px;
+  color:rgba(60,40,55,.7);border:1px solid rgba(255,255,255,.6);
+  backdrop-filter:blur(4px);
+}
+.acard-t{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:26px;line-height:1.1;margin-top:38px;margin-bottom:14px;color:#3A2330;}
+.acard-b{font-size:14px;line-height:1.65;color:rgba(58,35,48,.9);font-weight:500;margin-top:auto;font-family:'Jost',sans-serif;}
+
+.acard:nth-child(1){background:linear-gradient(155deg,#F8C8D0,#F2B3BE);transform:rotate(-9deg) translateY(20px);}
+.acard:nth-child(2){background:linear-gradient(155deg,#D9EBC4,#C8E1AE);transform:rotate(-4deg) translateY(8px);}
+.acard:nth-child(3){background:linear-gradient(155deg,#C9DEF0,#B3CFE8);transform:rotate(0deg) translateY(-4px);}
+.acard:nth-child(4){background:linear-gradient(155deg,#F5E8C2,#EFD9A6);transform:rotate(4deg) translateY(10px);}
+.acard:nth-child(5){background:linear-gradient(155deg,#D8CFEA,#C6BADC);transform:rotate(9deg) translateY(22px);}
+
+@media (max-width:900px){
+  .acards{flex-wrap:wrap;justify-content:center;}
+  .acard{transform:none !important;}
+}
+
+.a-stats{display:flex;gap:0;margin-top:48px;border-top:1px solid rgba(245,225,230,.14);padding-top:28px;}
+.ast{padding:0 32px 0 0;margin-right:32px;border-right:1px solid rgba(245,225,230,.1);}
+.ast:last-child{border-right:none;}
+.ast strong{display:block;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:40px;color:#F6ECEC;line-height:1;}
+.ast span{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:rgba(244,236,234,.85);margin-top:7px;display:block;font-weight:400;}
+
+/* ═══════════════════════════════
+   3. THE STAGES
+   Paris image bg — left dim for text
+═══════════════════════════════ */
+#stages{background:transparent;flex-direction:column;align-items:stretch;min-height:auto;padding:100px 0;}
+#stages .bg-layer{background-image:url('/images/extracted-image-2.jpg');filter:brightness(.22) saturate(.65);}
+#stages .bg-dim{
+  background:
+    linear-gradient(105deg,rgba(5,10,22,.96) 0%,rgba(8,14,30,.82) 38%,rgba(8,14,30,.45) 65%,rgba(10,16,32,.6) 100%),
+    linear-gradient(to bottom,rgba(5,10,22,.95) 0%,rgba(5,10,22,.4) 14%,transparent 30%,transparent 75%,rgba(5,10,22,.9) 100%);}
+
+.stages-wrap{max-width:1180px;width:100%;padding:0 64px;margin:0 auto;position:relative;z-index:2;
+  opacity:0;transform:scale(0.96);transition:transform 0.8s cubic-bezier(.16,1,.3,1),opacity 0.8s ease;}
+.curtain.open + .stages-wrap{opacity:1;transform:scale(1);}
+
+/* Section intro */
+.sec-intro{max-width:640px;margin-bottom:68px;}
+
+/* EVENT CARDS — premium cards for each event */
+.events-stack{display:flex;flex-direction:column;gap:52px;}
+.ev-card{
+  display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;
+  padding:48px;border-radius:24px;position:relative;overflow:hidden;
+  border:1px solid rgba(234,241,250,.1);
+  background:rgba(6,14,30,.55);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  box-shadow:0 20px 60px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04);
+}
+.ev-card::before{content:'';position:absolute;inset:0;border-radius:24px;
+  background:radial-gradient(ellipse 60% 60% at 70% 0%,rgba(150,195,242,.06),transparent 65%);pointer-events:none;}
+.ev-card-bg{position:absolute;inset:0;border-radius:24px;background-size:cover;background-position:center;opacity:.14;z-index:0;}
+.ev-card-inner{position:relative;z-index:1;}
+
+.ev-tag{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:rgba(150,195,242,.95);margin-bottom:10px;display:block;font-weight:450;}
+.ev-hl{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(26px,3.8vw,46px);color:#F4ECEA;line-height:.95;text-transform:uppercase;letter-spacing:-1px;margin-bottom:16px;}
+.ev-hl em{font-style:italic;color:rgba(150,195,242,.95);text-transform:none;}
+.ev-hl .a{font-size:.65em;font-style:normal;color:rgba(150,195,242,.95);}
+
+/* Metric grid inside event card */
+.ev-mg{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:20px 0;}
+.ev-mc{padding:22px 16px;border:1px solid rgba(150,195,242,.22);background:linear-gradient(160deg,rgba(150,195,242,.12),rgba(6,14,30,.55));transition:all .4s;}
+.ev-mc:hover{background:linear-gradient(160deg,rgba(150,195,242,.22),rgba(6,14,30,.6));border-color:rgba(150,195,242,.4);transform:translateY(-2px);}
+.ev-mc .n{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:44px;color:#F4ECEA;line-height:1;text-shadow:0 2px 18px rgba(150,195,242,.35);letter-spacing:-1px;}
+.ev-mc .l{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(234,241,250,.95);margin-top:8px;font-weight:450;}
+
+/* Speaker pills */
+.spills{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}
+.spi{font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:6px 13px;border-radius:100px;border:1px solid rgba(150,195,242,.35);color:rgba(150,195,242,.95);transition:all .5s;cursor:default;font-weight:450;}
+.spi:hover{color:rgba(234,241,250,.9);border-color:rgba(150,195,242,.45);}
+
+/* Coming Soon card — lighter treatment */
+.ev-card-soon{
+  padding:44px 48px;border-radius:24px;
+  border:1px solid rgba(234,241,250,.07);
+  background:rgba(6,14,30,.35);
+  backdrop-filter:blur(10px);
+  display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;
+}
+.soon-tag{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:rgba(245,200,214,.9);margin-bottom:10px;display:block;font-weight:450;}
+.soon-hl{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(22px,3.2vw,38px);color:rgba(244,236,234,.85);line-height:.95;text-transform:uppercase;letter-spacing:-1px;}
+.soon-hl em{font-style:italic;text-transform:none;color:rgba(245,200,214,.9);}
+.soon-sub{font-size:15px;line-height:1.8;color:rgba(244,236,234,.72);margin-top:14px;font-weight:400;}
+.soon-locations{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap;}
+.soon-loc{font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:7px 16px;border-radius:100px;border:1px solid rgba(234,241,250,.18);color:rgba(234,241,250,.8);font-weight:400;}
+
+/* NestGen — virtual event card */
+.ev-card-virtual{
+  padding:48px;border-radius:24px;
+  border:1px solid rgba(205,195,235,.2);
+  background:linear-gradient(135deg,rgba(205,195,235,.07) 0%,rgba(150,175,230,.05) 100%);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 16px 48px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.05);
+  display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:start;
+}
+.ev-virtual-tag{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:rgba(205,195,235,.95);margin-bottom:10px;display:block;font-weight:450;}
+.ev-virtual-hl{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(28px,4vw,50px);color:#F4ECEA;line-height:.95;text-transform:uppercase;letter-spacing:-1px;margin-bottom:16px;}
+.ev-virtual-hl em{font-style:italic;color:rgba(205,195,235,.95);text-transform:none;}
+.ev-virtual-hl .a{font-size:.65em;color:rgba(205,195,235,.95);font-style:normal;}
+.ng-sg{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin:20px 0;}
+.nss{padding:16px;border:1px solid rgba(205,195,235,.14);}
+.nss .n{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:28px;color:rgba(205,195,235,.95);line-height:1;}
+.nss .l{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(234,241,250,.8);margin-top:4px;font-weight:400;}
+
+/* Video card */
+.play-card{background:rgba(234,241,250,.05);backdrop-filter:blur(6px);border:1px solid rgba(234,241,250,.09);border-radius:16px;overflow:hidden;transition:all .5s;}
+.play-card:hover{border-color:rgba(234,241,250,.18);}
+.play-inner{position:relative;aspect-ratio:16/9;background:rgba(6,10,22,.95);display:flex;align-items:center;justify-content:center;flex-direction:column;overflow:hidden;}
+.play-btn{width:46px;height:46px;background:rgba(234,241,250,.12);border:1px solid rgba(234,241,250,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:10px;transition:all .5s;}
+.play-card:hover .play-btn{background:rgba(234,241,250,.22);}
+.play-lbl{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(234,241,250,.8);font-weight:400;}
+.play-link{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-decoration:none;}
+
+/* PAD */
+#numbers{padding-top:140px;padding-bottom:120px;}
+#paper{padding-top:120px;padding-bottom:120px;}
+/* ═══════════════════════════════
+   4. THE NUMBERS
+═══════════════════════════════ */
+#numbers{background:transparent;flex-direction:column;align-items:stretch;min-height:auto;padding:100px 0;}
+#numbers::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 65% 65% at 30% 55%,rgba(150,195,242,.06) 0%,transparent 68%);pointer-events:none;}
+
+.num-wrap{max-width:1180px;width:100%;padding:0 64px;margin:0 auto;position:relative;z-index:2;}
+.tg{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px;}
+.tc{border-radius:18px;padding:28px 24px;border:1px solid rgba(234,241,250,.09);background:rgba(234,241,250,.04);backdrop-filter:blur(6px);transition:all .5s;}
+.tc:hover{transform:translateY(-4px);background:rgba(234,241,250,.08);border-color:rgba(234,241,250,.18);}
+.tc-arr{width:20px;height:20px;background:rgba(234,241,250,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(234,241,250,.7);margin-left:auto;margin-bottom:11px;}
+.tc-n{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:52px;color:rgba(150,195,242,.92);line-height:1;}
+.tc-l{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(234,241,250,.8);margin-top:6px;font-weight:400;}
+.tc-b{font-size:15px;color:rgba(234,241,250,.72);margin-top:10px;line-height:1.8;font-weight:400;}
+.num-footnote{font-size:14px;color:rgba(234,241,250,.7);margin-top:28px;font-weight:400;line-height:1.8;font-style:italic;padding-left:2px;}
+
+/* FlytBase pill links */
+.pls{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px;}
+.pl{font-size:12px;letter-spacing:1px;text-transform:uppercase;text-decoration:none;padding:6px 14px;border:1px solid rgba(234,241,250,.24);border-radius:100px;color:rgba(234,241,250,.8);transition:all .5s;font-weight:400;}
+.pl:hover{border-color:rgba(234,241,250,.26);color:rgba(234,241,250,.85);background:rgba(234,241,250,.04);}
+
+/* ═══════════════════════════════
+   5. THE PAPER TRAIL
+═══════════════════════════════ */
+#paper{background:transparent;flex-direction:column;align-items:stretch;min-height:auto;padding:100px 0;}
+#paper::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 70% 45%,rgba(220,160,200,.06) 0%,transparent 65%);pointer-events:none;}
+
+.paper-wrap{max-width:1180px;width:100%;padding:0 64px;margin:0 auto;position:relative;z-index:2;}
+
+/* Article cards — exact match from reference file */
+.cg{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:36px 0 52px;}
+.cc{
+  padding:28px 24px;
+  border:1px solid rgba(245,225,230,.16);border-radius:22px;
+  text-decoration:none;color:inherit;display:flex;flex-direction:column;
+  transition:transform .55s cubic-bezier(.16,1,.3,1),box-shadow .55s,border-color .55s,background .55s;
+  position:relative;overflow:hidden;
+  background:linear-gradient(160deg,rgba(245,200,214,.08) 0%,rgba(170,180,235,.06) 55%,rgba(232,200,150,.05) 100%);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  box-shadow:0 14px 38px rgba(20,12,30,.35),inset 0 1px 0 rgba(255,255,255,.06);
+  min-height:190px;
+}
+.cc::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 0%,rgba(245,200,214,.22),transparent 55%);opacity:0;transition:opacity .55s;pointer-events:none;}
+.cc:hover::before{opacity:1;}
+.cc:hover{transform:translateY(-8px);border-color:rgba(245,200,214,.42);box-shadow:0 30px 60px rgba(20,12,30,.55),inset 0 1px 0 rgba(255,255,255,.14);}
+.ct{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:rgba(220,200,245,.95);margin-bottom:10px;font-weight:450;position:relative;z-index:1;}
+.cc h3{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:20px;color:#F6ECEC;line-height:1.3;margin-bottom:10px;position:relative;z-index:1;}
+.cc p{font-size:14px;line-height:1.7;color:rgba(244,236,234,.78);font-weight:400;position:relative;z-index:1;}
+.ca{position:absolute;bottom:18px;right:22px;color:rgba(220,200,245,.92);font-size:18px;transition:transform .4s;z-index:1;}
+.cc:hover .ca{transform:translate(4px,-4px);}
+
+/* Video row */
+.video-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:44px;}
+.vid-card{border-radius:16px;overflow:hidden;border:1px solid rgba(234,241,250,.09);background:rgba(6,14,30,.6);transition:all .5s;}
+.vid-card:hover{border-color:rgba(234,241,250,.2);}
+.vid-inner{position:relative;aspect-ratio:16/9;background:rgba(4,10,22,.95);display:flex;align-items:center;justify-content:center;flex-direction:column;}
+.vid-btn{width:40px;height:40px;background:rgba(234,241,250,.1);border:1px solid rgba(234,241,250,.22);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:9px;transition:all .4s;}
+.vid-card:hover .vid-btn{background:rgba(234,241,250,.2);}
+.vid-lbl{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:rgba(234,241,250,.85);font-weight:450;padding:0 22px;text-align:center;line-height:1.5;max-width:100%;}
+.vid-link{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-decoration:none;padding:18px 22px;box-sizing:border-box;}
+
+/* Newsletter strip */
+.nl{display:flex;justify-content:space-between;align-items:center;padding:32px 40px;border:1px solid rgba(245,225,230,.16);border-radius:20px;gap:32px;flex-wrap:wrap;transition:all .5s;
+  background:linear-gradient(135deg,rgba(245,200,214,.06),rgba(170,180,235,.04));backdrop-filter:blur(10px);}
+.nl:hover{border-color:rgba(245,225,230,.28);background:linear-gradient(135deg,rgba(245,200,214,.1),rgba(170,180,235,.07));}
+.nl-l h3{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:26px;color:#F6ECEC;margin-bottom:6px;}
+.nl-l p{font-size:14px;line-height:1.75;color:rgba(244,236,234,.72);font-weight:400;max-width:400px;}
+.nl-r strong{display:block;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:48px;color:#F6ECEC;line-height:1;opacity:.85;}
+.nl-r span{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:rgba(244,236,234,.8);font-weight:400;}
+
+/* ═══════════════════════════════
+   LOGOS
+═══════════════════════════════ */
+#logos{min-height:auto;padding:72px 0 280px 0;background:transparent;}
+.logo-r{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;justify-items:center;}
+.lb{padding:20px 28px;display:flex;align-items:center;justify-content:center;transition:all .5s;background:#f5f1ec;border-radius:14px;min-width:160px;min-height:84px;box-shadow:0 4px 18px rgba(0,0,0,.25);width:100%;}
+.lb:hover{background:#fff;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.32);}
+.lb img{height:44px;object-fit:contain;max-width:150px;opacity:1;transition:transform .5s;}
+.lb:hover img{transform:scale(1.06);}
+
+/* ═══════════════════════════════
+   CONTACT
+═══════════════════════════════ */
+#contact{background:transparent;min-height:100vh;}
+#contact::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 50% 50%,rgba(150,195,242,.055) 0%,transparent 68%);pointer-events:none;}
+.con{max-width:680px;text-align:center;padding:0 48px;position:relative;z-index:1;}
+.con-hl{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(52px,9vw,110px);color:#F4ECEA;line-height:.88;text-transform:uppercase;letter-spacing:-2px;margin-bottom:10px;text-shadow:0 2px 30px rgba(0,0,0,.3);}
+.con-hl em{font-style:italic;color:rgba(245,200,214,.78);text-transform:none;}
+.con-hl .a{font-size:.55em;color:rgba(245,200,214,.85);font-style:normal;}
+.con-email{display:inline-block;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(18px,3vw,26px);color:rgba(150,195,242,.88);text-decoration:none;border-bottom:1px solid rgba(150,195,242,.25);padding-bottom:3px;transition:all .5s;margin:32px 0;}
+.con-email:hover{color:#8CC3F8;}
+.con-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.con-btn{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:rgba(234,241,250,.85);text-decoration:none;border:1px solid rgba(234,241,250,.24);padding:13px 30px;border-radius:100px;transition:all .5s;font-weight:450;backdrop-filter:blur(8px);}
+.con-btn:hover{color:#EAF1FA;border-color:rgba(234,241,250,.45);}
+.con-btn.hi{color:rgba(150,195,242,.85);border-color:rgba(150,195,242,.35);}
+.con-btn.hi:hover{color:#8CC3F8;border-color:#8CC3F8;}
+
+footer{padding:18px 52px;border-top:1px solid rgba(234,241,250,.08);display:flex;justify-content:space-between;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(234,241,250,.6);font-weight:400;background:rgba(4,12,28,.6);}
+
+@media(max-width:960px){
+  .wrap,.aw,.stages-wrap,.num-wrap,.paper-wrap{padding:0 28px!important;}
+  .ev-card,.ev-card-virtual,.ev-card-soon{grid-template-columns:1fr!important;}
+  .tg,.ev-mg,.cg,.video-row,.logo-r{grid-template-columns:1fr 1fr!important;}
+  .ng-sg{grid-template-columns:1fr 1fr;}
+  .hero-gcards{display:none;}
+  .acards{height:auto;position:static;}
+  .acard{position:static!important;transform:none!important;width:100%!important;margin-bottom:10px;}
+  .hero-c{left:28px;right:28px;max-width:none;}
+  .con{padding:0 28px;}
+  #logos{padding-bottom:120px;}
+}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="cur" id="cur"></div>
+<div class="hero-bg-landscape" id="heroBgLandscape" style="background-image:url('/images/extracted-image-1.jpg');"></div>
+
+<nav class="nav" id="nav">
+  <div class="nav-mono">A · M</div>
+  <div class="nav-links">
+    <a href="#about">Story</a>
+    <a href="#stages">The Stages</a>
+    <a href="#numbers">The Numbers</a>
+    <a href="#paper">Writing</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="/Ayushi_Mishra_Resume_2026.pdf" target="_blank" class="nav-dl">Resume ↓</a>
+</nav>
+
+<!-- ═══ 1. HERO ═══ -->
+<section id="hero">
+  <div class="hero-bg" id="heroBg" style="background-image:url('/hero-portal.jpg');"></div>
+  <div class="hero-dim-l"></div>
+  <div class="hero-dim-b"></div>
+
+  <div class="dw" id="dw">
+    <div class="pan pan-l">
+      <svg viewBox="0 0 720 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="dpL" x1="1" y1="0" x2="0" y2="0"><stop offset="0%" stop-color="#110C05"/><stop offset="100%" stop-color="#170E07"/></linearGradient>
+          <radialGradient id="glL" cx="50%" cy="10%" r="52%"><stop offset="0%" stop-color="#8CC3F8" stop-opacity=".28"/><stop offset="45%" stop-color="#8CC3F8" stop-opacity=".09"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+          <linearGradient id="shL" x1="0" y1="0" x2="1" y2="0"><stop offset="55%" stop-color="transparent"/><stop offset="100%" stop-color="rgba(0,0,0,.72)"/></linearGradient>
+        </defs>
+        <rect width="720" height="900" fill="url(#dpL)"/>
+        <rect width="720" height="900" fill="url(#glL)"/>
+        <path d="M50 900 L50 408 Q50 118 360 75 Q670 118 670 408 L670 900" fill="none" stroke="#8CC3F8" stroke-width="1.6" opacity=".58"/>
+        <path d="M110 900 L110 438 Q110 188 360 155 Q610 188 610 438 L610 900" fill="none" stroke="#8CC3F8" stroke-width=".95" opacity=".32"/>
+        <path d="M170 900 L170 468 Q170 248 360 225 Q550 248 550 468 L550 900" fill="none" stroke="#8CC3F8" stroke-width=".45" opacity=".14"/>
+        <path d="M296 77 Q360 51 424 77" fill="none" stroke="#8CC3F8" stroke-width="1.1" opacity=".72"/>
+        <circle cx="360" cy="66" r="14" fill="rgba(150,195,242,.16)" stroke="#8CC3F8" stroke-width="1.4" opacity=".68"/>
+        <circle cx="360" cy="66" r="5.5" fill="#8CC3F8" opacity=".48"/>
+        <circle cx="360" cy="66" r="58" fill="none" stroke="#8CC3F8" stroke-width=".46" opacity=".24"/>
+        <circle cx="360" cy="66" r="96" fill="none" stroke="#8CC3F8" stroke-width=".28" opacity=".12"/>
+        <clipPath id="jL"><path d="M110 900 L110 438 Q110 188 360 155 Q610 188 610 438 L610 900 Z"/></clipPath>
+        <g clip-path="url(#jL)" opacity=".11" stroke="#8CC3F8" stroke-width=".5" fill="none">
+          <line x1="150" y1="0" x2="150" y2="900"/><line x1="190" y1="0" x2="190" y2="900"/><line x1="230" y1="0" x2="230" y2="900"/><line x1="270" y1="0" x2="270" y2="900"/><line x1="310" y1="0" x2="310" y2="900"/><line x1="350" y1="0" x2="350" y2="900"/><line x1="390" y1="0" x2="390" y2="900"/><line x1="430" y1="0" x2="430" y2="900"/><line x1="470" y1="0" x2="470" y2="900"/><line x1="510" y1="0" x2="510" y2="900"/><line x1="550" y1="0" x2="550" y2="900"/>
+          <line x1="0" y1="228" x2="720" y2="228"/><line x1="0" y1="278" x2="720" y2="278"/><line x1="0" y1="328" x2="720" y2="328"/><line x1="0" y1="378" x2="720" y2="378"/><line x1="0" y1="428" x2="720" y2="428"/>
+        </g>
+        <rect x="68" y="585" width="198" height="144" rx="3" fill="none" stroke="#8CC3F8" stroke-width=".68" opacity=".26"/>
+        <rect x="78" y="595" width="178" height="124" rx="2" fill="none" stroke="#8CC3F8" stroke-width=".32" opacity=".11"/>
+        <rect x="454" y="585" width="198" height="144" rx="3" fill="none" stroke="#8CC3F8" stroke-width=".68" opacity=".26"/>
+        <rect x="464" y="595" width="178" height="124" rx="2" fill="none" stroke="#8CC3F8" stroke-width=".32" opacity=".11"/>
+        <rect x="68" y="745" width="198" height="120" rx="3" fill="none" stroke="#8CC3F8" stroke-width=".68" opacity=".24"/>
+        <rect x="454" y="745" width="198" height="120" rx="3" fill="none" stroke="#8CC3F8" stroke-width=".68" opacity=".24"/>
+        <line x1="0" y1="128" x2="720" y2="128" stroke="#8CC3F8" stroke-width=".7" opacity=".28"/>
+        <line x1="0" y1="138" x2="720" y2="138" stroke="#8CC3F8" stroke-width=".3" opacity=".12"/>
+        <line x1="0" y1="563" x2="720" y2="563" stroke="#8CC3F8" stroke-width=".58" opacity=".22"/>
+        <line x1="0" y1="727" x2="720" y2="727" stroke="#8CC3F8" stroke-width=".58" opacity=".22"/>
+        <line x1="719" y1="0" x2="719" y2="900" stroke="#8CC3F8" stroke-width="2.2" opacity=".7"/>
+        <g transform="translate(639,473)" opacity=".7"><circle r="12" fill="rgba(150,195,242,.16)" stroke="#8CC3F8" stroke-width="1.4"/><circle r="5" fill="#8CC3F8" opacity=".5"/><line x1="0" y1="12" x2="0" y2="35" stroke="#8CC3F8" stroke-width="1.5"/><rect x="-9" y="35" width="18" height="5" rx="2.5" fill="none" stroke="#8CC3F8" stroke-width="1.1"/></g>
+        <rect width="720" height="900" fill="url(#shL)"/>
+      </svg>
+    </div>
+    <div class="pan pan-r">
+      <svg viewBox="0 0 720 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="dpR" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#110C05"/><stop offset="100%" stop-color="#170E07"/></linearGradient>
+          <radialGradient id="glR" cx="50%" cy="10%" r="52%"><stop offset="0%" stop-color="#8CC3F8" stop-opacity=".28"/><stop offset="45%" stop-color="#8CC3F8" stop-opacity=".09"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+          <linearGradient id="shR" x1="1" y1="0" x2="0" y2="0"><stop offset="55%" stop-color="transparent"/><stop offset="100%" stop-color="rgba(0,0,0,.72)"/></linearGradient>
+        </defs>
+        <rect width="720" height="900" fill="url(#dpR)"/>
+        <rect width="720" height="900" fill="url(#glR)"/>
+        <path d="M50 900 L50 408 Q50 118 360 75 Q670 118 670 408 L670 900" fill="none" stroke="#8CC3F8" stroke-width="1.6" opacity=".58"/>
+        <path d="M110 900 L110 438 Q110 188 360 155 Q610 188 610 438 L610 900" fill="none" stroke="#8CC3F8" stroke-width=".95" opacity=".32"/>
+        <path d="M170 900 L170 468 Q170 248 360 225 Q550 248 550 468 L550 900" fill="none" stroke="#8CC3F8" stroke-width=".45" opacity=".14"/>
+        <path d="M296 77 Q360 51 424 77" fill="none" stroke="#8CC3F8" stroke-width="1.1" opacity=".72"/>
+        <circle cx="360" cy="66" r="14" fill="rgba(150,195,242,.16)" stroke="#8CC3F8" stroke-width="1.4" opacity=".68"/>
+        <circle cx="360" cy="66" r="5.5" fill="#8CC3F8" opacity=".48"/>
+        <circle cx="360" cy="66" r="58" fill="none" stroke="#8CC3F8" stroke-width=".46" opacity=".24"/>
+        <circle cx="360" cy="66" r="96" fill="none" stroke="#8CC3F8" stroke-width=".28" opacity=".12"/>
+        <clipPath id="jR"><path d="M110 900 L110 438 Q110 188 360 155 Q610 188 610 438 L610 900 Z"/></clipPath>
+        <g clip-path="url(#jR)" opacity=".11" stroke="#8CC3F8" stroke-width=".5" fill="none">
+          <line x1="150" y1="0" x2="150" y2="900"/><line x1="190" y1="0" x2="190" y2="900"/><line x1="230" y1="0" x2="230" y2="900"/><line x1="270" y1="0" x2="270" y2="900"/><line x1="310" y1="0" x2="310" y2="900"/><line x1="350" y1="0" x2="350" y2="900"/><line x1="390" y1="0" x2="390" y2="900"/><line x1="430" y1="0" x2="430" y2="900"/><line x1="470" y1="0" x2="470" y2="900"/><line x1="510" y1="0" x2="510" y2="900"/><line x1="550" y1="0" x2="550" y2="900"/>
+          <line x1="0" y1="228" x2="720" y2="228"/><line x1="0" y1="278" x2="720" y2="278"/><line x1="0" y1="328" x2="720" y2="328"/><line x1="0" y1="378" x2="720" y2="378"/><line x1="0" y1="428" x2="720" y2="428"/>
+        </g>
+        <rect x="68" y="585" width="198" height="144" rx="3" fill="none" stroke="#8CC3F8" stroke-width=".68" opacity=".26"/>
+        <rect x="78" y="595" width="178" height="124" rx="2" fill="none" stroke="#8CC3F8" stroke-width=".32" opacity=".11"/>
+        <rect x="454" y="585" width="198" height="144" rx="3" fill="none" stroke="#8CC3F8" stroke-width=".68" opacity=".26"/>
+        <rect x="464" y="595" width="178" height="124" rx="2" fill="none" stroke="#8CC3F8" stroke-width=".32" opacity=".11"/>
+        <rect x="68" y="745" width="198" height="120" rx="3" fill="none" stroke="#8CC3F8" stroke-width=".68" opacity=".24"/>
+        <rect x="454" y="745" width="198" height="120" rx="3" fill="none" stroke="#8CC3F8" stroke-width=".68" opacity=".24"/>
+        <line x1="0" y1="128" x2="720" y2="128" stroke="#8CC3F8" stroke-width=".7" opacity=".28"/>
+        <line x1="0" y1="138" x2="720" y2="138" stroke="#8CC3F8" stroke-width=".3" opacity=".12"/>
+        <line x1="0" y1="563" x2="720" y2="563" stroke="#8CC3F8" stroke-width=".58" opacity=".22"/>
+        <line x1="0" y1="727" x2="720" y2="727" stroke="#8CC3F8" stroke-width=".58" opacity=".22"/>
+        <line x1="1" y1="0" x2="1" y2="900" stroke="#8CC3F8" stroke-width="2.2" opacity=".7"/>
+        <g transform="translate(81,473)" opacity=".7"><circle r="12" fill="rgba(150,195,242,.16)" stroke="#8CC3F8" stroke-width="1.4"/><circle r="5" fill="#8CC3F8" opacity=".5"/><line x1="0" y1="12" x2="0" y2="35" stroke="#8CC3F8" stroke-width="1.5"/><rect x="-9" y="35" width="18" height="5" rx="2.5" fill="none" stroke="#8CC3F8" stroke-width="1.1"/></g>
+        <rect width="720" height="900" fill="url(#shR)"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="hero-c" id="hc">
+    <div class="hero-hl">
+      <span class="l1">WHERE STRATEGY</span>
+      <span class="l2">BECOMES <em>Experience</em></span>
+    </div>
+    <p class="hero-sub">Customer marketing, global events, and AI-powered systems — moving pipeline and making enterprise moments unforgettable.</p>
+  </div>
+
+  <div class="yr">2026</div>
+  <div class="amb"></div>
+</section>
+
+  <!-- ═══ 2. THE STORY ═══ -->
+  <section id="about">
+    <div class="bg-dim"></div>
+  <div class="aw cz">
+    <span class="s-tag fr" style="color:rgba(210,155,175,.78);">The Story · Pune</span>
+    <h1 class="hl fr d1" style="font-size:clamp(40px,6.5vw,76px);">FROM <span class="a" style="color:rgba(210,155,175,.85);">›</span> <em style="color:rgba(210,155,175,.78);">Architecture</em><br>TO MARKETING <em style="color:rgba(210,155,175,.78);">Architect</em></h1>
+    <div class="gl fr d1" style="background:rgba(210,155,175,.38);"></div>
+    <p class="prose fr d2" style="max-width:500px;">Trained to design spaces that guide how people feel and move through the world. Now I design experiences — campaigns, events, and systems that shape how enterprise buyers understand and trust a brand. The lens changed. The instinct didn't.</p>
+    <div class="acards fr d3">
+      <div class="acard"><div class="acard-arr">↗</div><div class="acard-t">Customer<br>Marketing</div><div class="acard-b">Lifecycle campaigns, advocacy programs, customer expansion.</div></div>
+      <div class="acard"><div class="acard-arr">↗</div><div class="acard-t">Global<br>Events</div><div class="acard-b">4 Horizon editions. 3.5K+ attendees. End-to-end ownership.</div></div>
+      <div class="acard"><div class="acard-arr">↗</div><div class="acard-t">AI Systems<br>Builder</div><div class="acard-b">n8n content engines. Power Automate pipelines. Zero headcount added.</div></div>
+      <div class="acard"><div class="acard-arr">↗</div><div class="acard-t">Growth<br>& GTM</div><div class="acard-b">ABM, paid campaigns on DemandBase, Influ2, LinkedIn Ads.</div></div>
+      <div class="acard"><div class="acard-arr">↗</div><div class="acard-t">AI-Native<br>Execution</div><div class="acard-b">Claude, Genspark, Kimi, Lovable — built into daily workflow.</div></div>
+    </div>
+    <div class="a-stats fr d4">
+      <div class="ast"><strong>4</strong><span>Horizon Editions</span></div>
+      <div class="ast"><strong>3.5K+</strong><span>Conference Attendees</span></div>
+      <div class="ast"><strong>65%</strong><span>Pipeline Growth</span></div>
+      <div class="ast"><strong>2.5+</strong><span>Years Experience</span></div>
+    </div>
+    </div>
+  </section>
+
+<!-- ═══ 3. THE STAGES ═══ -->
+<section id="stages">
+  <div class="bg-layer"></div>
+  <div class="bg-dim"></div>
+  <div class="curtain" data-curtain>
+    <div class="cstage cstage1"><span class="ctag">Act II</span><span class="ctitle">THE STAGES</span></div>
+    <div class="cstage cstage2"><span class="ctag">Act II</span><span class="ctitle">Where Strategy Becomes a Room</span></div>
+  </div>
+  <div class="stages-wrap">
+    <div class="sec-intro">
+      <span class="s-tag fr" style="color:rgba(150,195,242,.72);">Live Experiences · Global Events</span>
+      <h2 class="hl fr d1">THE STAGES › <em>Where Strategy Becomes a Room</em></h2>
+      <div class="gl fr d1" style="background:rgba(150,195,242,.32);"></div>
+      <p class="prose fr d2">Two continents. Thousands of enterprise buyers in the room. Every speaker chosen, every session shaped, every moment on the ground — orchestrated. With two more global editions already in motion.</p>
+    </div>
+
+    <div class="events-stack">
+
+      <!-- Horizon EU & UK -->
+      <div class="ev-card fr d2">
+        <div class="ev-card-bg" style="background-image:url('/images/extracted-image-2.jpg');"></div>
+        <div class="ev-card-inner">
+          <span class="ev-tag">Zycus Flagship · 3-Day In-Person Conference · Vienna, 2026</span>
+          <h3 class="ev-hl">Horizon <span class="a">›</span> <em>EU & UK</em></h3>
+          <p class="prose" style="font-size:15px;max-width:420px;">Zycus' flagship global procurement leadership conference — three days of sessions, roundtables, a Gala Awards Night, and a live C-suite book launch. Every speaker narrative shaped in-house. Every detail of the room, the stage, the evening — produced and delivered.</p>
+          <a href="https://www.zycus.com/horizon-eu-uk-2026-sessions" target="_blank" class="elink" style="color:rgba(150,195,242,.72);border-color:rgba(150,195,242,.28);margin-top:18px;">Watch On-Demand →</a>
+        </div>
+        <div class="ev-card-inner">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;margin-top:8px;">
+            <div class="ev-mc"><div class="n">137</div><div class="l">Attendees</div></div>
+            <div class="ev-mc"><div class="n">23</div><div class="l">Speakers</div></div>
+            <div class="ev-mc"><div class="n">15</div><div class="l">Sessions</div></div>
+            <div class="ev-mc"><div class="n">130</div><div class="l">Meetings & Demos</div></div>
+            <div class="ev-mc"><div class="n">4.75</div><div class="l">Satisfaction /5</div></div>
+            <div class="ev-mc"><div class="n">98.5%</div><div class="l">Conversion Rate</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Horizon Australia -->
+      <div class="ev-card fr d3">
+        <div class="ev-card-bg" style="background-image:url('/images/extracted-image-5.jpg');"></div>
+        <div class="ev-card-inner">
+          <span class="ev-tag">Zycus Flagship · 2-Day In-Person Conference · Melbourne, 2026</span>
+          <h3 class="ev-hl">Horizon <span class="a">›</span> <em>Australia</em></h3>
+          <p class="prose" style="font-size:15px;max-width:420px;">The ANZ chapter of the Horizon series. New geography, same standard. Two days of procurement leadership — speaker journeys coordinated, content built, branding executed, and every registration through to on-site experience led from the ground up.</p>
+          <a href="https://www.zycus.com/horizon-australia-2026-sessions" target="_blank" class="elink" style="color:rgba(150,195,242,.72);border-color:rgba(150,195,242,.28);margin-top:18px;">Watch On-Demand →</a>
+        </div>
+        <div class="ev-card-inner">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;margin-top:8px;">
+            <div class="ev-mc"><div class="n">90</div><div class="l">Attendees</div></div>
+            <div class="ev-mc"><div class="n">16</div><div class="l">Speakers</div></div>
+            <div class="ev-mc"><div class="n">12</div><div class="l">Sessions</div></div>
+            <div class="ev-mc"><div class="n">72</div><div class="l">Meetings & Demos</div></div>
+            <div class="ev-mc"><div class="n">4.6</div><div class="l">Satisfaction /5</div></div>
+            <div class="ev-mc"><div class="n">8</div><div class="l">Media Interviews</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coming Soon -->
+      <div class="ev-card-soon fr d4">
+        <div>
+          <span class="soon-tag">Upcoming · In Motion</span>
+          <div class="soon-hl">Horizon <em>SEA & US</em></div>
+          <p class="soon-sub">Two more editions in parallel motion. Singapore and the United States — each with its own regional playbook, speaker strategy, and production requirements. Currently being built.</p>
+          <div class="soon-locations">
+            <div class="soon-loc">Singapore</div>
+            <div class="soon-loc">United States</div>
+          </div>
+        </div>
+        <div style="opacity:.45;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(60px,8vw,96px);color:rgba(234,241,250,.3);line-height:1;text-align:right;letter-spacing:-2px;text-transform:uppercase;">
+          Coming<br><em style="color:rgba(234,241,250,.2);">Soon</em>
+        </div>
+      </div>
+
+      <!-- NestGen -->
+      <div class="ev-card-virtual fr d5">
+        <div>
+          <span class="ev-virtual-tag">World's Largest Virtual Drone Conference · Dec 2024 – Feb 2025</span>
+          <h3 class="ev-virtual-hl">Nest<em>Gen</em> <span class="a">›</span> <em>'25</em></h3>
+          <div class="gl" style="background:rgba(205,195,235,.32);"></div>
+          <p class="prose" style="font-size:15px;max-width:440px;">The world's largest virtual drone autonomy conference. Every speaker acquired, every sponsor brought in, every session produced, every promotional sequence written and launched — directed end to end. Record attendance. Record enterprise representation.</p>
+          <div class="ng-sg" style="margin-top:24px;">
+            <div class="nss"><div class="n">3.5K+</div><div class="l">Global Attendees</div></div>
+            <div class="nss"><div class="n">78</div><div class="l">Speakers</div></div>
+            <div class="nss"><div class="n">30+</div><div class="l">Sessions</div></div>
+            <div class="nss"><div class="n">30%</div><div class="l">YoY Growth</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="play-card">
+            <div class="play-inner">
+              <a href="https://www.youtube.com/watch?v=pRF3EuRPK4s&t=4311s" target="_blank" class="play-link">
+                <div class="play-btn"><svg width="13" height="13" viewBox="0 0 13 13"><path d="M2.5 1.5l9 5.5-9 5.5V1.5z" fill="rgba(205,195,235,.9)"/></svg></div>
+                <div class="play-lbl">Opening Keynote</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end events-stack -->
+  </div>
+</section>
+
+<!-- ═══ 4. THE NUMBERS ═══ -->
+<section id="numbers">
+  <div class="num-wrap">
+    <span class="s-tag fr" style="color:rgba(150,195,242,.72);">Growth · Pipeline · Systems</span>
+    <h2 class="hl fr d1">THE WORK › <em>Behind the Numbers</em></h2>
+    <div class="gl fr d1" style="background:rgba(150,195,242,.3);"></div>
+    <p class="prose fr d2" style="max-width:580px;">The campaigns that moved pipeline, the systems that eliminated entire manual processes, and the content engine that made Zycus visible where competitors weren't looking.</p>
+
+    <div class="tg">
+      <div class="tc fr d2">
+        <div class="tc-arr">↗</div>
+        <div class="tc-n">65%</div>
+        <div class="tc-l">Pipeline Growth</div>
+        <div class="tc-b">Scaled monthly leads from 100 to 165+ through ABM co-marketing and multi-touch campaigns across EMEA and APAC. Mid-funnel engagement up 40%.</div>
+      </div>
+      <div class="tc fr d3">
+        <div class="tc-arr">↗</div>
+        <div class="tc-n">3×</div>
+        <div class="tc-l">Webinar Attendance</div>
+        <div class="tc-b">10+ webinars across 6 months. Live attendance grew from 30–40 to 90–110 per session. Registration rates 83% higher through strategic retargeting and optimised email sequences.</div>
+      </div>
+      <div class="tc fr d4">
+        <div class="tc-arr">↗</div>
+        <div class="tc-n">83%</div>
+        <div class="tc-l">AI Traffic Lift</div>
+        <div class="tc-b">Built an n8n workflow identifying LLM visibility gaps across Claude, Gemini, and other platforms — auto-publishing 50–60 branded pages weekly. Keyword ranking moved from #8 to #1 in 45 days.</div>
+      </div>
+    </div>
+    <p class="num-footnote fr d5">Plus a Power Automate registration pipeline that eliminated 2–4 hours of daily manual work across 2–3 people — now processing 150–200 registrations per Horizon edition with zero human touchpoints.</p>
+
+    <div style="margin-top:44px;padding-top:36px;border-top:1px solid rgba(234,241,250,.07);" class="fr d5">
+      <span class="s-tag" style="color:rgba(205,195,235,.72);margin-bottom:12px;">Related Work</span>
+      <div class="pls">
+        <a href="https://www.flytbase.com/blog/statnett-deploys-first-remote-drone-inspection-with-flytbase" target="_blank" class="pl">Statnett PR</a>
+        <a href="https://www.flytbase.com/industries/oil-gas-operations" target="_blank" class="pl">Oil & Gas</a>
+        <a href="https://www.flytbase.com/flinks" target="_blank" class="pl">Flinks Launch</a>
+        <a href="https://www.flytbase.com/flytlaunch/dock-3-flytlaunch" target="_blank" class="pl">Dock 3 Event</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 5. THE PAPER TRAIL ═══ -->
+<section id="paper">
+  <div class="paper-wrap">
+    <span class="s-tag fr" style="color:rgba(220,200,245,.75);">Writing · Video · Newsletter</span>
+    <h2 class="hl fr d1">THE WORK › <em>That Travels</em></h2>
+    <div class="gl fr d1" style="background:rgba(220,200,245,.28);"></div>
+    <p class="prose fr d2" style="max-width:520px;">From enterprise press releases to technical deep-dives — content built to move buyers, not just fill feeds.</p>
+
+    <!-- Articles & Case Studies -->
+    <div class="cg">
+      <a href="https://www.flytbase.com/case-studies/shell-petroleum-autonomous-drone-inspections-oil-and-gas" target="_blank" class="cc fr d1"><div class="ct">Case Study · Shell</div><h3>Shell Petroleum Autonomous Drone Inspections</h3><p>Oil &amp; gas enterprise case study on autonomous drone inspection deployment.</p><span class="ca">↗</span></a>
+      <a href="https://www.flytbase.com/case-studies/slovakia-military-wildfire-detection-dock-drones" target="_blank" class="cc fr d2"><div class="ct">Case Study · Slovakia Military</div><h3>Wildfire Detection with Dock Drones</h3><p>Defence sector case study on autonomous wildfire detection.</p><span class="ca">↗</span></a>
+      <a href="https://www.flytbase.com/blog/statnett-deploys-first-remote-drone-inspection-with-flytbase" target="_blank" class="cc fr d1"><div class="ct">PR · FlytBase</div><h3>Statnett Deploys First Remote Drone Inspection</h3><p>Enterprise deployment for Norway's national grid operator.</p><span class="ca">↗</span></a>
+      <a href="https://www.flytbase.com/blog/flytbase-partners-with-aeronex-to-deliver-advanced-drone-autonomy-solutions-across-the-mena-region" target="_blank" class="cc fr d2"><div class="ct">PR · FlytBase</div><h3>FlytBase Partners with Aeronex for MENA</h3><p>Strategic partnership for Middle East and North Africa expansion.</p><span class="ca">↗</span></a>
+      <a href="https://www.zycus.com/press-releases/zycus-to-drive-procurement-transformation-for-outokumpu-stainless-usa-with-merlin-ai-powered-source-to-pay-solution" target="_blank" class="cc fr d3"><div class="ct">Press Release · Zycus</div><h3>Zycus Drives Transformation for Outokumpu USA</h3><p>Enterprise procurement transformation for Fortune-listed manufacturer.</p><span class="ca">↗</span></a>
+      <a href="https://www.flytbase.com/blog/automating-drone-operations-for-enterprises-with-dji-dock-3-and-flytbase" target="_blank" class="cc fr d1"><div class="ct">Blog · FlytBase</div><h3>Automating Enterprise Drone Operations with DJI Dock 3</h3><p>Technical deep-dive on enterprise drone workflow automation.</p><span class="ca">↗</span></a>
+      <a href="https://www.flytbase.com/blog/securing-enterprise-drone-data-with-flytbase-shield-for-dji-dock-3" target="_blank" class="cc fr d2"><div class="ct">Blog · FlytBase</div><h3>Securing Enterprise Drone Data with FlytBase Shield</h3><p>Data protection content for enterprise drone operations.</p><span class="ca">↗</span></a>
+      <a href="https://www.flytbase.com/blog/scaling-safe-docked-drone-operations-with-senhive-and-flytbase" target="_blank" class="cc fr d3"><div class="ct">Blog · FlytBase</div><h3>Scaling Safe Docked Drone Operations</h3><p>Scaling autonomous enterprise drone operations safely.</p><span class="ca">↗</span></a>
+    </div>
+
+    <!-- Video row -->
+    <div class="video-row fr d3">
+      <div class="vid-card">
+        <div class="vid-inner">
+          <a href="https://www.youtube.com/watch?v=Uwy9euV9_hI" target="_blank" class="vid-link">
+            <div class="vid-btn"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 1.2l9 4.8-9 4.8V1.2z" fill="rgba(220,200,245,.9)"/></svg></div>
+            <div class="vid-lbl">Navigating SORA Approvals for Docked Drones</div>
+          </a>
+        </div>
+      </div>
+      <div class="vid-card">
+        <div class="vid-inner">
+          <a href="https://www.youtube.com/watch?v=erY6xerUoo8" target="_blank" class="vid-link">
+            <div class="vid-btn"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 1.2l9 4.8-9 4.8V1.2z" fill="rgba(220,200,245,.9)"/></svg></div>
+            <div class="vid-lbl">Ensuring Safer Autonomous Docked Drone Ops in Low-Altitude Airspace</div>
+          </a>
+        </div>
+      </div>
+      <div class="vid-card">
+        <div class="vid-inner">
+          <a href="https://www.youtube.com/watch?v=jkl_qmDfbb0" target="_blank" class="vid-link">
+            <div class="vid-btn"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 1.2l9 4.8-9 4.8V1.2z" fill="rgba(220,200,245,.9)"/></svg></div>
+            <div class="vid-lbl">Simplifying SORA Approvals for Scalable Docked Drone Operations</div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="nl fr d4">
+      <div class="nl-l">
+        <h3>FlytBase Scoop</h3>
+        <p>Built and grew FlytBase's LinkedIn newsletter from zero — drone autonomy, enterprise operations, and industry intelligence for operators and enterprise buyers who don't have time for noise.</p>
+        <a href="https://www.linkedin.com/newsletters/flytbase-scoop-7155108050633121793/" target="_blank" class="elink" style="color:rgba(220,200,245,.72);border-color:rgba(220,200,245,.25);margin-top:14px;">Read Newsletter →</a>
+      </div>
+      <div class="nl-r" style="text-align:center;flex-shrink:0;">
+        <strong>17K+</strong>
+        <span>Subscribers · 3 Months</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LOGOS ═══ -->
+<section id="logos">
+  <div style="max-width:1180px;margin:0 auto;padding:0 64px;width:100%;" class="cz">
+    <p class="s-tag fr" style="text-align:center;margin-bottom:22px;color:rgba(150,195,242,.6);">Companies I've Worked With</p>
+    <h2 class="hl fr d1" style="text-align:center;margin-bottom:36px;font-size:clamp(16px,2.5vw,28px);color:rgba(244,236,234,.28);">Brands That <span class="a" style="color:rgba(150,195,242,.5);">›</span> <em>Trust</em> the Work</h2>
+    <div class="logo-r fr d2">
+      <div class="lb"><img src="/brands/heineken.png" alt="Heineken" loading="lazy" width="1920" height="461"/></div>
+      <div class="lb"><img src="/brands/delta.png" alt="Delta" loading="lazy" width="960" height="148"/></div>
+      <div class="lb"><img src="/brands/porsche.png" alt="Porsche" loading="lazy" width="450" height="139"/></div>
+      <div class="lb"><img src="/brands/nippon.png" alt="Nippon Gases" loading="lazy" width="1024" height="346"/></div>
+      <div class="lb"><img src="/brands/airliquide.png" alt="Air Liquide" loading="lazy" width="1920" height="367"/></div>
+      <div class="lb"><img src="/brands/shell.png" alt="Shell" loading="lazy" width="1280" height="1187"/></div>
+      <div class="lb"><img src="/brands/tigerbrands.png" alt="Tiger Brands" loading="lazy" width="1920" height="1264"/></div>
+      <div class="lb"><img src="/brands/cargolux.png" alt="Cargolux" loading="lazy" width="280" height="200"/></div>
+      <div class="lb"><img src="/brands/bolt.png" alt="Bolt" loading="lazy" width="1447" height="849"/></div>
+      <div class="lb"><img src="/brands/vline.png" alt="V/Line" loading="lazy" width="1280" height="668"/></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <div class="con cz">
+    <span class="s-tag fr" style="color:rgba(150,195,242,.62);">What's Next</span>
+    <h2 class="con-hl fr d1">Let's Make<br><em>Something</em> <span class="a">›</span> Good</h2>
+    <a href="mailto:ayushimishra054@gmail.com" class="con-email fr d2">ayushimishra054@gmail.com</a>
+    <div class="con-btns fr d3">
+      <a href="https://www.linkedin.com/in/ayushimishra14/" target="_blank" class="con-btn">LinkedIn ↗</a>
+      <a href="/Ayushi_Mishra_Resume_2026.pdf" target="_blank" class="con-btn hi">Download Resume ↓</a>
+    </div>
+  </div>
+</section>
+
+<script>
+const cur=document.getElementById('cur');
+document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';});
+document.querySelectorAll('a,button,.tc,.ev-mc,.am,.lb,.cc,.acard,.nss,.gc,.vid-card,.ev-card,.ev-card-virtual').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cur.classList.add('big'));
+  el.addEventListener('mouseleave',()=>cur.classList.remove('big'));
+});
+
+document.body.style.overflow='hidden';
+setTimeout(()=>{
+  ['dw','heroBg','heroBgLandscape','hc','hgc','hd','sb','hero'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el)el.classList.add('open');
+  });
+},700);
+setTimeout(()=>{document.body.style.overflow='';},4200);
+setTimeout(()=>{document.getElementById('nav').classList.add('show');},5500);
+
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+},{threshold:0.05,rootMargin:'0px 0px -24px 0px'});
+document.querySelectorAll('.fr,.fi').forEach(el=>obs.observe(el));
+
+const cObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){
+    const el=e.target;
+    requestAnimationFrame(()=>el.classList.add('s1'));
+    setTimeout(()=>el.classList.add('s2'),200);
+    setTimeout(()=>el.classList.add('open'),500);
+    cObs.unobserve(el);
+  }});
+},{threshold:0.1});
+document.querySelectorAll('[data-curtain]').forEach(el=>cObs.observe(el));
+
+// Hero scroll zoom-reveal animation
+const hero = document.getElementById('hero');
+const heroBg = document.getElementById('heroBg');
+const heroBgLandscape = document.getElementById('heroBgLandscape');
+
+if (hero && heroBg && heroBgLandscape) {
+  const handleScroll = () => {
+    const scrollY = window.scrollY;
+    const viewportHeight = window.innerHeight;
+
+    if (scrollY > 0) {
+      document.body.classList.add('scrolled');
+    } else {
+      document.body.classList.remove('scrolled');
+    }
+
+    if (scrollY <= viewportHeight) {
+      const progress = scrollY / viewportHeight;
+
+      // Portal zooms in rapidly and fades out
+      const portalScale = 1 + progress * 4.5;
+      const portalOpacity = Math.max(0, 0.75 - progress * 1.25);
+
+      // Landscape zooms in slightly and fades in to full intensity
+      const landscapeScale = 0.85 + progress * 0.25;
+      const landscapeOpacity = Math.min(1, 0.18 + progress * 1.1);
+
+      requestAnimationFrame(() => {
+        heroBg.style.transform = `scale(${portalScale})`;
+        heroBg.style.opacity = portalOpacity;
+
+        heroBgLandscape.style.transform = `scale(${landscapeScale})`;
+        heroBgLandscape.style.opacity = landscapeOpacity;
+      });
+    } else {
+      // Scrolled past hero (scrolling through about section)
+      // Fade out the landscape background smoothly over the next 500px of scroll
+      const fadeProgress = Math.min((scrollY - viewportHeight) / 500, 1);
+      const landscapeOpacity = 1 - fadeProgress;
+
+      requestAnimationFrame(() => {
+        heroBg.style.opacity = 0;
+        heroBgLandscape.style.transform = 'scale(1.1)';
+        heroBgLandscape.style.opacity = landscapeOpacity;
+      });
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll);
+  handleScroll();
+}
+</script>
+</body>
+</html>
