@@ -6,7 +6,7 @@ A premium, cinematic personal portfolio showcasing 2.5+ years of enterprise mark
 
 ---
 
-## ✨ Highlights 
+## ✨ Highlights
 
 - 🎬 **Cinematic intro** with animated door-reveal and iris/portal transition
 - 🃏 **Interactive story cards** with stacked, rotated glassmorphism layouts
@@ -21,31 +21,31 @@ A premium, cinematic personal portfolio showcasing 2.5+ years of enterprise mark
 
 ## 🗂️ Sections
 
-| Section | Description |
-|---|---|
-| **Hero** | Animated door reveal, headline, and role overview |
-| **The Story** | From Architecture to Marketing Architect — background cards + key stats |
-| **The Stages** | Global event portfolio: Horizon EU, UK, India & NestGen |
-| **The Numbers** | Quantified impact metrics with FlytBase context |
-| **The Paper Trail** | Articles, newsletter, and video content |
-| **Logos** | Brand partners and featured platforms |
-| **Contact** | Email, LinkedIn, and resume download |
+| Section             | Description                                                             |
+| ------------------- | ----------------------------------------------------------------------- |
+| **Hero**            | Animated door reveal, headline, and role overview                       |
+| **The Story**       | From Architecture to Marketing Architect — background cards + key stats |
+| **The Stages**      | Global event portfolio: Horizon EU, UK, India & NestGen                 |
+| **The Numbers**     | Quantified impact metrics with FlytBase context                         |
+| **The Paper Trail** | Articles, newsletter, and video content                                 |
+| **Logos**           | Brand partners and featured platforms                                   |
+| **Contact**         | Email, LinkedIn, and resume download                                    |
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Tool | Purpose |
-|---|---|
-| [React 19](https://react.dev) | UI framework |
-| [Vite 7](https://vitejs.dev) | Build tool & dev server |
-| [TanStack Router](https://tanstack.com/router) | Type-safe client-side routing |
-| [TanStack Query](https://tanstack.com/query) | Server state management |
-| [Tailwind CSS v4](https://tailwindcss.com) | Utility-first styling |
-| [Radix UI](https://www.radix-ui.com) | Accessible component primitives |
-| [Lucide React](https://lucide.dev) | Icon library |
-| [Cloudflare Vite Plugin](https://developers.cloudflare.com/workers/frameworks/framework-guides/vite/) | Edge deployment |
-| TypeScript | Type safety |
+| Tool                                                                                                  | Purpose                         |
+| ----------------------------------------------------------------------------------------------------- | ------------------------------- |
+| [React 19](https://react.dev)                                                                         | UI framework                    |
+| [Vite 7](https://vitejs.dev)                                                                          | Build tool & dev server         |
+| [TanStack Router](https://tanstack.com/router)                                                        | Type-safe client-side routing   |
+| [TanStack Query](https://tanstack.com/query)                                                          | Server state management         |
+| [Tailwind CSS v4](https://tailwindcss.com)                                                            | Utility-first styling           |
+| [Radix UI](https://www.radix-ui.com)                                                                  | Accessible component primitives |
+| [Lucide React](https://lucide.dev)                                                                    | Icon library                    |
+| [Cloudflare Vite Plugin](https://developers.cloudflare.com/workers/frameworks/framework-guides/vite/) | Edge deployment                 |
+| TypeScript                                                                                            | Type safety                     |
 
 ---
 
