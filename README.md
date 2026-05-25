@@ -6,7 +6,7 @@ A premium, cinematic personal portfolio showcasing 2.5+ years of enterprise mark
 
 ---
 
-## ✨ Highlights
+## ✨ Highlights shrey
 
 - 🎬 **Cinematic intro** with animated door-reveal and iris/portal transition
 - 🃏 **Interactive story cards** with stacked, rotated glassmorphism layouts
